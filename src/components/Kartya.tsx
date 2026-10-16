@@ -7,7 +7,7 @@ interface KartyaProps{
     index:number
 }
 
-function Kartya({elem,setAllitas}:KartyaProps){
+function Kartya({elem,setAllitas,index}:KartyaProps){
     return (
         <div className="kartya">
             <span>{elem.nev}</span>
@@ -16,7 +16,7 @@ function Kartya({elem,setAllitas}:KartyaProps){
             <p>Emelet: {elem.emelet}</p>
             <p>Férőhely: {elem.ferohely} fő</p>
             <p>Foglalt helyek: {elem.foglalt_helyek} fő</p>
-            <button onClick={()=>setAllitas(elem.foglalt_helyek)}>Helyet foglalok</button>
+            <button onClick={()=>setAllitas(index)} disabled={elem.foglalt_helyek >= elem.ferohely}>Helyet foglalok</button>
         </div>
     )
 }
