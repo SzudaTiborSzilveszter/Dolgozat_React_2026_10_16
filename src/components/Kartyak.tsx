@@ -1,5 +1,6 @@
 import type { szobaTipus } from "../tanuloszobak"
 import Kartya from "./Kartya"
+import '../Kartya.css'
 
 interface KartyakProps{
     lista: szobaTipus[],
@@ -8,7 +9,7 @@ interface KartyakProps{
 
 function Kartyak({lista,setAllitas}:KartyakProps){
     return(
-        <div>
+        <div className="kartyak">
             {
                 lista.map((elem,index)=>{
                     return(
