@@ -182,3 +182,14 @@
     border-right-color: var(--border);
   }
 }
+
+header{
+  border: 1px solid black;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+article{
+  display: flex;
+  flex-wrap: wrap;
+}

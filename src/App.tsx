@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import './App.css'
-import { SZOBALISTA, szobaTipus } from './tanuloszobak'
+import { SZOBALISTA, type szobaTipus } from './tanuloszobak'
+import Kartyak from './components/Kartyak';
 
 function App() {
-  const [lista,setLista]=useState<szobaTipus[]>(SZOBALISTA);
-  function setFerohely(index:number,elem: number){
+  const [lista,setFerohely]=useState<szobaTipus[]>(SZOBALISTA);
+  function setAllitas(index:number){
     const ferohelyNoveles:szobaTipus[]=[...lista]
-    ferohelyNoveles[index].foglalt_helyek+1
+    ferohelyNoveles[index].foglalt_helyek
+    console.log(index)
     setFerohely(ferohelyNoveles)
   }
   return (
@@ -16,7 +18,7 @@ function App() {
         <p>Találd meg a számodra megfelelő tanulóhelyet!</p>
       </header>
       <article>
-        <Kartyak lista={lista} setFerohely={setFerohely}/>
+        <Kartyak lista={lista} setAllitas={setAllitas}/>
       </article>
       <footer>
         <p>Készítette: Szuda Tibor Szilveszter</p>
