@@ -1,19 +1,16 @@
-import type { szobaTipus } from "../tanuloszobak"
 import Kartya from "./Kartya"
 import '../Kartya.css'
+import { useTanuloszobaContext } from "../contexts/TanuloszobaContext"
 
-interface KartyakProps{
-    lista: szobaTipus[],
-    setAllitas:(index:number)=>void
-}
+function Kartyak(){
+    const { szobaLista } = useTanuloszobaContext()
 
-function Kartyak({lista,setAllitas}:KartyakProps){
     return(
         <div className="kartyak">
             {
-                lista.map((elem,index)=>{
+                szobaLista.map((elem,index)=>{
                     return(
-                        <Kartya elem={elem} setAllitas={setAllitas} index={index} key={index}/>
+                        <Kartya elem={elem} index={index} key={elem.id}/>
                     )
                 })
             }

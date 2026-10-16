@@ -1,13 +1,15 @@
 import type { szobaTipus} from "../tanuloszobak";
 import '../Kartya.css'
+import { useTanuloszobaContext } from "../contexts/TanuloszobaContext"
 
 interface KartyaProps{
     elem: szobaTipus,
-    setAllitas:(index:number)=>void,
     index:number
 }
 
-function Kartya({elem,setAllitas,index}:KartyaProps){
+function Kartya({elem,index}:KartyaProps){
+    const { foglalasKezelo } = useTanuloszobaContext()
+
     return (
         <div className="kartya">
             <span>{elem.nev}</span>
@@ -16,7 +18,7 @@ function Kartya({elem,setAllitas,index}:KartyaProps){
             <p>Emelet: {elem.emelet}</p>
             <p>Férőhely: {elem.ferohely} fő</p>
             <p>Foglalt helyek: {elem.foglalt_helyek} fő</p>
-            <button onClick={()=>setAllitas(index)} disabled={elem.foglalt_helyek >= elem.ferohely}>Helyet foglalok</button>
+            <button onClick={()=>foglalasKezelo(index)} disabled={elem.foglalt_helyek >= elem.ferohely}>Helyet foglalok</button>
         </div>
     )
 }
